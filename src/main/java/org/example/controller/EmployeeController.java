@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.dao.EmployeeDao;
 import org.example.dto.EmployeeDtoRq;
 import org.example.entities.Employee;
-import org.example.mapper.EmployeeMapper;
 import org.example.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,6 @@ import java.util.Map;
 @Slf4j
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class EmployeeController {
-
-    private EmployeeMapper mapper;
     private EmployeeService service;
 
     @PostMapping(path = "/employee")
@@ -26,18 +23,18 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/employee/{id}")
-    public void getEmployee(@PathVariable Integer id) {
-        service.getEmployee(id);
+    public Employee getEmployee(@PathVariable Integer id) {
+        return service.getEmployee(id);
     }
 
     @PatchMapping(path = "/employee/{id}")
-    public void patchEmployee(@RequestBody EmployeeDtoRq request, @PathVariable Integer id) {
-        service.updateEmployee(id, request);
+    public Employee patchEmployee(@RequestBody EmployeeDtoRq request, @PathVariable Integer id) {
+        return service.updateEmployee(id, request);
     }
 
     @DeleteMapping(path = "/employee/{id}")
-    public void deleteEmployee(@PathVariable Integer id) {
-        service.deleteEmployee(id);
+    public Employee deleteEmployee(@PathVariable Integer id) {
+        return service.deleteEmployee(id);
     }
 
     @GetMapping(path = "/employees")

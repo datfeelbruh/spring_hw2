@@ -23,15 +23,19 @@ public class EmployeeDao {
         return employees.getOrDefault(id, null);
     }
 
-    public void updateEmployee(Integer id, Employee employee) {
+    public Employee updateEmployee(Integer id, Employee employee) {
         Employee updatedEmployee = employees.get(id);
         updatedEmployee.setName(employee.getName());
         updatedEmployee.setAge(employee.getAge());
         updatedEmployee.setSalary(employee.getSalary());
+
+        return updatedEmployee;
     }
 
-    public void deleteEmployee(Integer id) {
+    public Employee deleteEmployee(Integer id) {
+        Employee deletedEmployee = getEmployee(id);
         employees.remove(id);
+        return deletedEmployee;
     }
 
     public static Map<Integer, Employee> getEmployees() {

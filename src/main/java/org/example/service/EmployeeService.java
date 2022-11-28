@@ -19,16 +19,16 @@ public class EmployeeService {
         data.createEmployee(employee);
     }
 
-    public void getEmployee(Integer id) {
-        mapper.getEmployeeFromDao(id);
+    public Employee getEmployee(Integer id) {
+        return data.getEmployee(id);
     }
 
-    public void deleteEmployee(Integer id) {
-        data.deleteEmployee(id);
+    public Employee deleteEmployee(Integer id) {
+        return data.deleteEmployee(id);
     }
 
-    public void updateEmployee(Integer id, EmployeeDtoRq request) {
+    public Employee updateEmployee(Integer id, EmployeeDtoRq request) {
         Employee employee = mapper.getEmployeeFromRequest(request);
-        data.updateEmployee(id, employee);
+        return data.updateEmployee(id, employee);
     }
 }
